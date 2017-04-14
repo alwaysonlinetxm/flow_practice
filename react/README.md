@@ -8,6 +8,7 @@ Practice of React & Redux with Flow
 1. Flow做的是编译时检查，所有检查都是基于当前代码中对已声明类型的变量的使用，所有运行时的变更都不在检查范围之内；
 2. css/sass等文件的使用需要在.flowconfig中配置option的module.name_mapper.extension，具体设置参照代码示例；
 3. 示例代码中还使用了[flow-typed](https://github.com/flowtype/flow-typed)来做对第三方模块的type check；
+4. 由于React Preset已经包含了`syntax-flow`和`transform-flow-strip-types`，所以使用babel进行打包编译时，无需配置额外的内容；
 
 ### React with Flow
 
