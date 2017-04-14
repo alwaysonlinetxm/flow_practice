@@ -56,6 +56,11 @@ class Root extends PureComponent<DefaultProps, Props, State> {
     this.props.getList();
   }
 
+  // will check type by flow
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    console.log(prevProps, prevState);
+  }
+
   render() {
     const { list, text } = this.props;
 

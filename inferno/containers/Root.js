@@ -7,18 +7,22 @@ import Actions from '../actions/CommonActions';
 import Text from './Text';
 import './reset.css';
 
-class Root extends Component {
-  props: {
-    +text: string,
-    +total: number,
-    +list: Array<string>,
-    setText: () => mixed,
-    getList: () => mixed
-  }
+type Props = {
+  text: string,
+  total: number,
+  list: Array<string>,
+  setText: () => mixed,
+  getList: () => mixed
+};
 
-  state: {
-    text: string
-  }
+type State = {
+  text: string
+};
+
+class Root extends Component {
+  props: Props
+
+  state: State
 
   constructor(props) {
     super(props);
@@ -40,6 +44,11 @@ class Root extends Component {
 
   componentWillMount() {
     this.props.getList();
+  }
+
+  // will check type by flow
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    console.log(prevProps, prevState);
   }
 
   render() {
