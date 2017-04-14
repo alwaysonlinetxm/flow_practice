@@ -100,6 +100,16 @@ Flow在Redux中主要对state，action，reducer进行检查。
     function setText(text: string): SetText {
       return { type: "SET_TEXT", text };
     }
+    
+在特殊场景下，可能需要使用到union action type：
+
+    type SetText = { type: "SET_TEXT", text: string };
+    type GetList = { type: "GET_LIST" };
+
+    type Action = SetText | GetList;
+    
+具体使用场景在reducer一块会提到。
+    
     
 #### reducer type check
  
@@ -124,7 +134,10 @@ Flow在Redux中主要对state，action，reducer进行检查。
           return state;
       }
     }
-    
+  
+有个问题是，作为reducer，能接收到的action是有多个的，而每个action的type其实都是不一样的，那么如何设置action参数的类型呢？
+可以看到这里对于action参数的类型检查给了一个Action类型，这个Action类型正式上文提到的union action，正好解决了action参数多类型的情况。
+
 ### Unresolved problems
 
 1. 安装了flow-type之后，对`connect(mapStateToProps, mapDispatchToProps)(Root)`产生了报错，原因未知，参见(https://github.com/flowtype/flow-typed/issues/778).现解决办法是把那行通过suppress_comment注释掉了。
