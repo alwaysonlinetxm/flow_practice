@@ -23,7 +23,7 @@ class Root extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: 'lalala'
+      text: 'lalala' // will check type by flow
     };
   }
 
@@ -33,8 +33,9 @@ class Root extends Component {
     });
   }
 
-  setText = () => {
+  setText = (event: Event & { currentTarget: HTMLDivElement }) => {
     this.props.setText('demaxiya');
+    console.log(event.target); // will check type by flow
   }
 
   componentWillMount() {

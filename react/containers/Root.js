@@ -26,12 +26,14 @@ type State = {
 };
 
 class Root extends PureComponent<DefaultProps, Props, State> {
+  // will check type by flow
   static defaultProps = {
     text: '',
     total: 0,
     list: []
   }
 
+  // will check type by flow
   state = {
     text: 'lalala'
   }
@@ -45,8 +47,9 @@ class Root extends PureComponent<DefaultProps, Props, State> {
     });
   }
 
-  setText = () => {
+  setText = (event: Event & { currentTarget: HTMLDivElement }) => {
     this.props.setText('demaxiya');
+    console.log(event.target); // will check type by flow
   }
 
   componentWillMount() {
